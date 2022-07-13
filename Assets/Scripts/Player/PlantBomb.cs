@@ -19,6 +19,7 @@ public class PlantBomb : MonoBehaviour
 
     [Header("Destructible")]
     public Tilemap destructibleTiles;
+    public Destructible destructiblePrefab;
 
     public KeyCode bombPlant = KeyCode.Space;
 
@@ -75,7 +76,7 @@ public class PlantBomb : MonoBehaviour
     {
         position += direction;
 
-        if (Physics2D.OverlapBox(position, Vector2.one / 2f, 0f, explosionLayerMask))
+        if (length > 0 && Physics2D.OverlapBox(position, Vector2.one / 2f, 0f, explosionLayerMask))
         {
             ClearDestructible(position);
         }
@@ -94,8 +95,15 @@ public class PlantBomb : MonoBehaviour
 
         if (tile != null)
         {
+            Instantiate(destructiblePrefab, position, Quaternion.identity);
             destructibleTiles.SetTile(cell, null);
         }
+    }
+
+    public void AddBomb()
+    {
+        bombAmount++;
+        bombRemain++;
     }
 
 

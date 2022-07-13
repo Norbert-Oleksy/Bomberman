@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4038463708703755502}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  deadbody: {fileID: 4383120086253833284, guid: e38614929c34ac045b1ca22496b41f12, type: 3}
   playerMoveUp: 119
   playerMoveDown: 115
   playerMoveLeft: 97
@@ -118,7 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bombPrefeb: {fileID: 2582005153791896112, guid: a682c7c1500487642b006080051e290d, type: 3}
-  bombTimer: 3
+  bombTimer: 2
   bombAmount: 1
   explosionPrefab: {fileID: 5098315309284263598, guid: 7516be3048129a0448b6caa722ad35cc, type: 3}
   explosionLayerMask:
@@ -126,7 +127,8 @@ MonoBehaviour:
     m_Bits: 64
   explosionDuration: 1
   explosionRadius: 1
-  destructibleTiles: {fileID: 0}
+  destructibleTiles: {fileID: 5005709521687987027, guid: f813f163fd0e71246a16fa56860b5a92, type: 3}
+  destructiblePrefab: {fileID: 2474971896594290835, guid: 1ad66ee0aaf60f648afce32a87532e8a, type: 3}
   bombPlant: 32
 --- !u!50 &4038463708703755497
 Rigidbody2D:

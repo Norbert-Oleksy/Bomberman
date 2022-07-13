@@ -6,6 +6,7 @@ public class PlayerControl : MonoBehaviour
 {
     Rigidbody2D rigidbody2d;
     public float speed = 5f;
+    public GameObject deadbody;
 
     public KeyCode playerMoveUp = KeyCode.W;
     public KeyCode playerMoveDown = KeyCode.S;
@@ -18,14 +19,6 @@ public class PlayerControl : MonoBehaviour
         rigidbody2d = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-
-    
     void FixedUpdate()
     {
         Vector2 position = rigidbody2d.position;
@@ -50,7 +43,30 @@ public class PlayerControl : MonoBehaviour
 
         rigidbody2d.MovePosition(position + translation);
     }
-    
+
+    private void OnTriggerEnter2D(Collider2D obj)
+    {
+        if (obj.gameObject.layer == LayerMask.NameToLayer("Explosion"))
+        {
+            DeathSequence();
+        }
+    }
+
+    private void DeathSequence()
+    {
+        Vector2 position = transform.position;
+        enabled = false;
+        gameObject.SetActive(false);
+        GetComponent<PlantBomb>().enabled = false;
+        GameObject deadplayer = Instantiate(deadbody, position, Quaternion.identity);
+        Invoke(nameof(OnDeathSequenceEnded), 0.2f);
+    }
+
+    private void OnDeathSequenceEnded()
+    {
+        FindObjectOfType<GameManager>().CheckWinState();
+    }
+
 }
 
 /* Pomys³y

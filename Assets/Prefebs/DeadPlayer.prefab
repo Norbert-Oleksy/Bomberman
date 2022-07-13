@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5098315309284263598
+--- !u!1 &4383120086253833284
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,39 +8,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3032460306766725836}
-  - component: {fileID: 6096559172934426127}
-  - component: {fileID: 5712720024060565598}
-  - component: {fileID: 2923230606135238832}
-  m_Layer: 8
-  m_Name: Explosion
+  - component: {fileID: 1087237674230358873}
+  - component: {fileID: 6728154584054917937}
+  - component: {fileID: 5947508371625139385}
+  m_Layer: 0
+  m_Name: DeadPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3032460306766725836
+--- !u!4 &1087237674230358873
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5098315309284263598}
+  m_GameObject: {fileID: 4383120086253833284}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1, y: 1, z: -0.049399935}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &6096559172934426127
+--- !u!212 &6728154584054917937
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5098315309284263598}
+  m_GameObject: {fileID: 4383120086253833284}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -74,8 +73,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 4
-  m_Sprite: {fileID: 21300000, guid: 7f4fa84331ed6af45a8d933e0db20eab, type: 3}
+  m_SortingOrder: 5
+  m_Sprite: {fileID: 21300000, guid: 9e7cfbad41d83244ca3f734ed5a200cc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -86,51 +85,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &5712720024060565598
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5098315309284263598}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.8, y: 0.8}
-  m_EdgeRadius: 0
---- !u!114 &2923230606135238832
+--- !u!114 &5947508371625139385
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5098315309284263598}
+  m_GameObject: {fileID: 4383120086253833284}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 22b9b17fc71d9df4880b9504c98aee66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idleSprite: {fileID: 21300000, guid: 7f4fa84331ed6af45a8d933e0db20eab, type: 3}
+  idleSprite: {fileID: 21300000, guid: 9e7cfbad41d83244ca3f734ed5a200cc, type: 3}
   animationSprites:
-  - {fileID: 21300000, guid: 7f4fa84331ed6af45a8d933e0db20eab, type: 3}
-  - {fileID: 21300000, guid: 8cd2b4287cece42448a71f56eace837e, type: 3}
-  - {fileID: 21300000, guid: 15d4a6b2e6b792544bcbf1cb615ac0fe, type: 3}
-  - {fileID: 21300000, guid: 64a2ed0bc80956a4bbcb012fbca8e3a4, type: 3}
-  - {fileID: 21300000, guid: 479c3e3e631e24d46bff525018f8ebcd, type: 3}
-  animationTime: 0.25
+  - {fileID: 21300000, guid: 9e7cfbad41d83244ca3f734ed5a200cc, type: 3}
+  - {fileID: 21300000, guid: ecc99b3a11f2e304aa97b387f96d60ad, type: 3}
+  - {fileID: 21300000, guid: 6463a86fb578949488414c8eadaca3f4, type: 3}
+  - {fileID: 21300000, guid: f8fce899269cbb24fb0587c59b3187e7, type: 3}
+  - {fileID: 21300000, guid: ddc9068c42a37da4db3ac87980c4e510, type: 3}
+  - {fileID: 21300000, guid: 65f32d1977cad9b4a90315e87795743c, type: 3}
+  - {fileID: 21300000, guid: d609c5af56827d84c933566f120c50f7, type: 3}
+  - {fileID: 21300000, guid: 199ef9df8bc2d5145a62ed7ad55afd20, type: 3}
+  animationTime: 0.05
   loop: 0
   idle: 0
