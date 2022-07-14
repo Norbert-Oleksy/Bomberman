@@ -13,11 +13,12 @@ public class Destructible : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameLogic = GameObject.Find("GameLogic");
+
         //GameLogic
         spawnChance = gameLogic.GetComponent<GameManager>().spawnChance;
         destructionTime = gameLogic.GetComponent<GameManager>().destructionTime;
         spawnItems = gameLogic.GetComponent<GameManager>().spawnItems;
-
         Destroy(gameObject, destructionTime);
     }
 

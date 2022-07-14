@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Tilemaps;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class GameManager : MonoBehaviour
     public int explosionRadius = 1;
     public float bombTimer = 3f;
     public float explosionDuration = 1f;
+    public LayerMask explosionLayerMask;
+    public Tilemap destructibleTiles;
 
     [Header("Game-Variables-Destructible")]
     public float destructionTime = 1f;

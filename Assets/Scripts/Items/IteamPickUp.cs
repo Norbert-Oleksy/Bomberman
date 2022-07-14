@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class IteamPickUp : MonoBehaviour
 {
+    public GameObject bomb;
     //sekcja odpowiedzialna za typ podnoszonego itemu
     public enum ItemType
     {
         MoreBombs,
         Speed,
         ExplosionExpand,
+        PackDynamites,
     }
     public ItemType type;
 
@@ -31,7 +33,11 @@ public class IteamPickUp : MonoBehaviour
                 player.GetComponent<PlayerControl>().SetPlayerSpeed(1);
                 break;
             case ItemType.ExplosionExpand:
-                player.GetComponent<PlantBomb>().SetBombRadious(1);
+               // player.GetComponent<PlantBomb>().SetBombRadious(1);
+                break;
+            case ItemType.PackDynamites:
+                player.GetComponent<PlantBomb>().bombPrefebSpecial = bomb;
+                player.GetComponent<PlantBomb>().special = true;
                 break;
         }
 

@@ -289,6 +289,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4253191609065576344, guid: 5d16cbf57657de9458581b7a29758347, type: 3}
+      propertyPath: spawnChance
+      value: 0.738
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253191609065576344, guid: 5d16cbf57657de9458581b7a29758347, type: 3}
+      propertyPath: destructibleTiles
+      value: 
+      objectReference: {fileID: 1912816497}
+    - target: {fileID: 4253191609065576344, guid: 5d16cbf57657de9458581b7a29758347, type: 3}
       propertyPath: players.Array.data[0]
       value: 
       objectReference: {fileID: 25869808}
@@ -296,6 +304,18 @@ PrefabInstance:
       propertyPath: players.Array.data[1]
       value: 
       objectReference: {fileID: 1807475001}
+    - target: {fileID: 4253191609065576344, guid: 5d16cbf57657de9458581b7a29758347, type: 3}
+      propertyPath: spawnItems.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253191609065576344, guid: 5d16cbf57657de9458581b7a29758347, type: 3}
+      propertyPath: spawnItems.Array.data[3]
+      value: 
+      objectReference: {fileID: 7466524437370149149, guid: cc88dfd8c95235345a61254e575a2d9c, type: 3}
+    - target: {fileID: 4253191609065576344, guid: 5d16cbf57657de9458581b7a29758347, type: 3}
+      propertyPath: explosionLayerMask.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 4253191609065576345, guid: 5d16cbf57657de9458581b7a29758347, type: 3}
       propertyPath: m_Name
       value: GameLogic

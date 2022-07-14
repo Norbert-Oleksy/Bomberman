@@ -4,16 +4,10 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 
-public class BombManager : MonoBehaviour
+public class Bomb : MonoBehaviour
 {
-
     public GameObject gameLogic;
-
-    [Header("Bomb")]
-    public GameObject bombPrefeb;
     private float bombTimer = 3f;
-    private int bombAmount = 1;
-    private int bombRemain;
 
     [Header("Explosion")]
     public GameObject explosionPrefab;
@@ -28,43 +22,38 @@ public class BombManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //GameLogic
-        bombAmount = gameLogic.GetComponent<GameManager>().bombAmount;
+        gameLogic = GameObject.Find("GameLogic");
         explosionRadius = gameLogic.GetComponent<GameManager>().explosionRadius;
         bombTimer = gameLogic.GetComponent<GameManager>().bombTimer;
         explosionDuration = gameLogic.GetComponent<GameManager>().explosionDuration;
+        explosionLayerMask = gameLogic.GetComponent<GameManager>().explosionLayerMask;
+        destructibleTiles = gameLogic.GetComponent<GameManager>().destructibleTiles;
 
-        bombRemain = bombAmount;
+        StartCoroutine(PlantingBomb());
     }
 
-    public void PlantBomb(Vector2 position)
+    private IEnumerator PlantingBomb()
     {
-        StartCoroutine(PlantingBomb(position));
-    }
-
-    private IEnumerator PlantingBomb(Vector2 position)
-    {
-        position.x = Mathf.Round(position.x);
-        position.y = Mathf.Round(position.y);
-
-        GameObject bomb = Instantiate(bombPrefeb, position, Quaternion.identity);
-        bombRemain--;
-
         yield return new WaitForSeconds(bombTimer);
-
-        position = bomb.transform.position;
+        Vector2 position = transform.position;
         position.x = Mathf.Round(position.x);
         position.y = Mathf.Round(position.y);
-
         GameObject explosion = Instantiate(explosionPrefab, position, Quaternion.identity);
         Explode(position, Vector2.up, explosionRadius);
         Explode(position, Vector2.down, explosionRadius);
         Explode(position, Vector2.left, explosionRadius);
         Explode(position, Vector2.right, explosionRadius);
         Destroy(explosion.gameObject, explosionDuration);
+        Destroy(gameObject);
 
-        Destroy(bomb);
-        bombRemain++;
+    }
+
+    private void OnTriggerExit2D(Collider2D obj)
+    {
+        if (obj.gameObject.layer == LayerMask.NameToLayer("Bomb"))
+        {
+            obj.isTrigger = false;
+        }
     }
 
     private void Explode(Vector2 position, Vector2 direction, int length)
@@ -94,4 +83,5 @@ public class BombManager : MonoBehaviour
             destructibleTiles.SetTile(cell, null);
         }
     }
+
 }
