@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
+    public GameObject gameLogic;
     Rigidbody2D rigidbody2d;
-    public float speed = 5f;
+    private float speed;
     public GameObject deadbody;
 
     public KeyCode playerMoveUp = KeyCode.W;
@@ -17,6 +18,9 @@ public class PlayerControl : MonoBehaviour
     void Start()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
+
+        //GameLogic
+        speed = gameLogic.GetComponent<GameManager>().speedPlayers;
     }
 
     void FixedUpdate()
@@ -67,44 +71,9 @@ public class PlayerControl : MonoBehaviour
         FindObjectOfType<GameManager>().CheckWinState();
     }
 
-}
-
-/* Pomys³y
-    
-    // Przenosi postaæ co kratkê
-     private float nextActionTime = 0.0f;
-     public float period = 1f;
-    void Update()
+    public void SetPlayerSpeed(int val)
     {
-        if (Time.time > nextActionTime)
-        {
-            nextActionTime = Time.time + period;
-            canMove = true;
-        }
-
-        Vector2 position = rigidbody2d.position;
-
-        if (Input.GetKey(playerMoveUp) && canMove)
-        {
-            rigidbody2d.MovePosition(position + Vector2.up);
-            canMove = false;
-        }
-        else if (Input.GetKey(playerMoveDown) && canMove)
-        {
-            rigidbody2d.MovePosition(position + Vector2.down);
-            canMove = false;
-        }
-        else if (Input.GetKey(playerMoveLeft) && canMove)
-        {
-            rigidbody2d.MovePosition(position + Vector2.left);
-            canMove = false;
-        }
-        else if (Input.GetKey(playerMoveRight) && canMove)
-        {
-            rigidbody2d.MovePosition(position + Vector2.right);
-            canMove = false;
-        }
-
+        speed+=val;
     }
 
-*/
+}

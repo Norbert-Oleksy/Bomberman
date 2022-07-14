@@ -125,12 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca3286ea856a68746935c81fcae155df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destructionTime: 1
-  spawnChance: 0.2
-  spawnItems:
-  - {fileID: 5179331521947994894, guid: 480b81e8727f4e147863e8e351ea87d8, type: 3}
-  - {fileID: 8829490867246361145, guid: ba995d2eeb2b38f48a26e21c3217afc1, type: 3}
-  - {fileID: 7570471120398756442, guid: d9215fe1841a7ab43acde8c45ae3f415, type: 3}
+  gameLogic: {fileID: 4253191609065576345, guid: 5d16cbf57657de9458581b7a29758347, type: 3}
 --- !u!114 &8189650046563104289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,6 +145,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: d8d9e7b2c45d06840851f1380d686511, type: 3}
   - {fileID: 21300000, guid: 82b5d932ff79cd64b989d4049f6fe0e4, type: 3}
   - {fileID: 21300000, guid: e21ed5c5e41b34b43a7cf9e397b552b6, type: 3}
-  animationTime: 0.25
+  animationTime: 0.2
   loop: 0
   idle: 0

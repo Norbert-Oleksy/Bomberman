@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4253191609065576345
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4253191609065576347}
+  - component: {fileID: 4253191609065576344}
+  m_Layer: 0
+  m_Name: GameLogic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4253191609065576347
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4253191609065576345}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.7793255, y: 1.2855219, z: -0.049399935}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4253191609065576344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4253191609065576345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 009eecf17154db24a92017633819dd6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  players:
+  - {fileID: 4038463708703755510, guid: b97c9b8a902387440951d121b9140755, type: 3}
+  - {fileID: 6776392370149067274, guid: ae2706d34892ed442aa3754b4783572b, type: 3}
+  speedPlayers: 5
+  bombAmount: 1
+  explosionRadius: 1
+  bombTimer: 3
+  explosionDuration: 0.8
+  destructionTime: 1
+  spawnChance: 0.2
+  spawnItems:
+  - {fileID: 5179331521947994894, guid: 480b81e8727f4e147863e8e351ea87d8, type: 3}
+  - {fileID: 8829490867246361145, guid: ba995d2eeb2b38f48a26e21c3217afc1, type: 3}
+  - {fileID: 7570471120398756442, guid: d9215fe1841a7ab43acde8c45ae3f415, type: 3}

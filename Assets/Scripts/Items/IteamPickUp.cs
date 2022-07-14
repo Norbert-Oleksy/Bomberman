@@ -28,10 +28,10 @@ public class IteamPickUp : MonoBehaviour
                 player.GetComponent<PlantBomb>().AddBomb();
                 break;
             case ItemType.Speed:
-                player.GetComponent<PlayerControl>().speed++;
+                player.GetComponent<PlayerControl>().SetPlayerSpeed(1);
                 break;
             case ItemType.ExplosionExpand:
-                player.GetComponent<PlantBomb>().explosionRadius++;
+                player.GetComponent<PlantBomb>().SetBombRadious(1);
                 break;
         }
 

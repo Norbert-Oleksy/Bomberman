@@ -6,7 +6,21 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public GameObject[] players;
-   
+
+    [Header("Game-Variables-Player")]
+    public float speedPlayers = 5f;
+
+    [Header("Game-Variables-Bomb")]
+    public int bombAmount = 1;
+    public int explosionRadius = 1;
+    public float bombTimer = 3f;
+    public float explosionDuration = 1f;
+
+    [Header("Game-Variables-Destructible")]
+    public float destructionTime = 1f;
+    [Range(0f, 1f)]
+    public float spawnChance = 0.2f;
+    public GameObject[] spawnItems;
 
     public void CheckWinState()
     {

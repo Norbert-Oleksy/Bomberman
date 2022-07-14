@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class PlantBomb : MonoBehaviour
+
+public class BombManager : MonoBehaviour
 {
+
     public GameObject gameLogic;
 
     [Header("Bomb")]
@@ -23,8 +25,6 @@ public class PlantBomb : MonoBehaviour
     public Tilemap destructibleTiles;
     public Destructible destructiblePrefab;
 
-    public KeyCode bombPlant = KeyCode.Space;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -37,18 +37,13 @@ public class PlantBomb : MonoBehaviour
         bombRemain = bombAmount;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void PlantBomb(Vector2 position)
     {
-        if (Input.GetKeyDown(bombPlant) && bombRemain>0)
-        {
-            StartCoroutine(PlantingBomb());
-        }
+        StartCoroutine(PlantingBomb(position));
     }
 
-    private IEnumerator PlantingBomb()
+    private IEnumerator PlantingBomb(Vector2 position)
     {
-        Vector2 position = transform.position;
         position.x = Mathf.Round(position.x);
         position.y = Mathf.Round(position.y);
 
@@ -70,14 +65,6 @@ public class PlantBomb : MonoBehaviour
 
         Destroy(bomb);
         bombRemain++;
-    }
-
-    private void OnTriggerExit2D(Collider2D obj)
-    {
-        if(obj.gameObject.layer == LayerMask.NameToLayer("Bomb"))
-        {
-            obj.isTrigger = false;
-        }
     }
 
     private void Explode(Vector2 position, Vector2 direction, int length)
@@ -106,16 +93,5 @@ public class PlantBomb : MonoBehaviour
             Instantiate(destructiblePrefab, position, Quaternion.identity);
             destructibleTiles.SetTile(cell, null);
         }
-    }
-
-    public void AddBomb()
-    {
-        bombAmount++;
-        bombRemain++;
-    }
-
-    public void SetBombRadious(int val)
-    {
-        explosionRadius += val;
     }
 }

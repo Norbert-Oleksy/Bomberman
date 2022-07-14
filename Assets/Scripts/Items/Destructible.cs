@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class Destructible : MonoBehaviour
 {
-    public float destructionTime = 1f;
+    public GameObject gameLogic;
 
-    [Range(0f, 1f)]
-    public float spawnChance = 0.2f;
-    public GameObject[] spawnItems;
+    private float destructionTime = 1f;
+    public float spawnChance;
+    private GameObject[] spawnItems;
 
     // Start is called before the first frame update
     void Start()
     {
+        //GameLogic
+        spawnChance = gameLogic.GetComponent<GameManager>().spawnChance;
+        destructionTime = gameLogic.GetComponent<GameManager>().destructionTime;
+        spawnItems = gameLogic.GetComponent<GameManager>().spawnItems;
+
         Destroy(gameObject, destructionTime);
     }
 
