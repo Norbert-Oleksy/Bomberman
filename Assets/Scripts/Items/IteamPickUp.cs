@@ -11,7 +11,7 @@ public class IteamPickUp : MonoBehaviour
         MoreBombs,
         Speed,
         ExplosionExpand,
-        PackDynamites,
+        Item,
     }
     public ItemType type;
 
@@ -33,9 +33,9 @@ public class IteamPickUp : MonoBehaviour
                 player.GetComponent<PlayerControl>().SetPlayerSpeed(1);
                 break;
             case ItemType.ExplosionExpand:
-               // player.GetComponent<PlantBomb>().SetBombRadious(1);
+                player.GetComponent<PlantBomb>().SetBombRadious(1);
                 break;
-            case ItemType.PackDynamites:
+            case ItemType.Item:
                 player.GetComponent<PlantBomb>().bombPrefebSpecial = bomb;
                 player.GetComponent<PlantBomb>().special = true;
                 break;

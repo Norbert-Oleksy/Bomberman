@@ -52,9 +52,17 @@ MonoBehaviour:
   explosionRadius: 1
   bombTimer: 3
   explosionDuration: 0.8
+  explosionLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  destructibleTiles: {fileID: 0}
   destructionTime: 1
   spawnChance: 0.2
   spawnItems:
   - {fileID: 5179331521947994894, guid: 480b81e8727f4e147863e8e351ea87d8, type: 3}
   - {fileID: 8829490867246361145, guid: ba995d2eeb2b38f48a26e21c3217afc1, type: 3}
   - {fileID: 7570471120398756442, guid: d9215fe1841a7ab43acde8c45ae3f415, type: 3}
+  - {fileID: 7466524437370149149, guid: cc88dfd8c95235345a61254e575a2d9c, type: 3}
+  - {fileID: 1310013046059952653, guid: 7c75b734cf360ed4a803b21b2935442a, type: 3}
+  - {fileID: 1874814664227307149, guid: 74944a9d3abcd664899a31c2d2a89754, type: 3}
+  - {fileID: 2712212140155663085, guid: 90e6fcd6db552fb4db874e756691a716, type: 3}

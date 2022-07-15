@@ -290,7 +290,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4253191609065576344, guid: 5d16cbf57657de9458581b7a29758347, type: 3}
       propertyPath: spawnChance
-      value: 0.738
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4253191609065576344, guid: 5d16cbf57657de9458581b7a29758347, type: 3}
       propertyPath: destructibleTiles
@@ -306,12 +306,24 @@ PrefabInstance:
       objectReference: {fileID: 1807475001}
     - target: {fileID: 4253191609065576344, guid: 5d16cbf57657de9458581b7a29758347, type: 3}
       propertyPath: spawnItems.Array.size
-      value: 4
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4253191609065576344, guid: 5d16cbf57657de9458581b7a29758347, type: 3}
       propertyPath: spawnItems.Array.data[3]
       value: 
       objectReference: {fileID: 7466524437370149149, guid: cc88dfd8c95235345a61254e575a2d9c, type: 3}
+    - target: {fileID: 4253191609065576344, guid: 5d16cbf57657de9458581b7a29758347, type: 3}
+      propertyPath: spawnItems.Array.data[4]
+      value: 
+      objectReference: {fileID: 1310013046059952653, guid: 7c75b734cf360ed4a803b21b2935442a, type: 3}
+    - target: {fileID: 4253191609065576344, guid: 5d16cbf57657de9458581b7a29758347, type: 3}
+      propertyPath: spawnItems.Array.data[5]
+      value: 
+      objectReference: {fileID: 1874814664227307149, guid: 74944a9d3abcd664899a31c2d2a89754, type: 3}
+    - target: {fileID: 4253191609065576344, guid: 5d16cbf57657de9458581b7a29758347, type: 3}
+      propertyPath: spawnItems.Array.data[6]
+      value: 
+      objectReference: {fileID: 2712212140155663085, guid: 90e6fcd6db552fb4db874e756691a716, type: 3}
     - target: {fileID: 4253191609065576344, guid: 5d16cbf57657de9458581b7a29758347, type: 3}
       propertyPath: explosionLayerMask.m_Bits
       value: 64

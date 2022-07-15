@@ -18,6 +18,8 @@ public class PlantBomb : MonoBehaviour
     [Header("Explosion")]
     public GameObject explosionPrefab;
     public LayerMask explosionLayerMask;
+    private float explosionDuration = 1f;
+    private int explosionRadius = 1;
 
 
     [Header("Destructible")]
@@ -30,8 +32,13 @@ public class PlantBomb : MonoBehaviour
     void Start()
     {
         //GameLogic
-        bombAmount = gameLogic.GetComponent<GameManager>().bombAmount;
+        gameLogic = GameObject.Find("GameLogic");
+        explosionRadius = gameLogic.GetComponent<GameManager>().explosionRadius;
         bombTimer = gameLogic.GetComponent<GameManager>().bombTimer;
+        explosionDuration = gameLogic.GetComponent<GameManager>().explosionDuration;
+        explosionLayerMask = gameLogic.GetComponent<GameManager>().explosionLayerMask;
+        destructibleTiles = gameLogic.GetComponent<GameManager>().destructibleTiles;
+        bombAmount = gameLogic.GetComponent<GameManager>().bombAmount;
 
         bombRemain = bombAmount;
         bombPrefebSpecial = bombPrefeb;
@@ -56,23 +63,66 @@ public class PlantBomb : MonoBehaviour
         {
             GameObject bomb = Instantiate(bombPrefebSpecial, position, Quaternion.identity);
             special = false;
+            bombRemain--;
+            yield return new WaitForSeconds(bombTimer);
+            bombRemain++;
         }
         else
         {
+            bombRemain--;
+
             GameObject bomb = Instantiate(bombPrefeb, position, Quaternion.identity);
+
+            yield return new WaitForSeconds(bombTimer);
+            position = bomb.transform.position;
+            position.x = Mathf.Round(position.x);
+            position.y = Mathf.Round(position.y);
+            GameObject explosion = Instantiate(explosionPrefab, position, Quaternion.identity);
+            Explode(position, Vector2.up, explosionRadius);
+            Explode(position, Vector2.down, explosionRadius);
+            Explode(position, Vector2.left, explosionRadius);
+            Explode(position, Vector2.right, explosionRadius);
+
+            Destroy(explosion.gameObject, explosionDuration);
+            Destroy(bomb);
+            bombRemain++;
         }
-        bombRemain--;
 
-        yield return new WaitForSeconds(bombTimer);
-
-        bombRemain++;
     }
 
     private void OnTriggerExit2D(Collider2D obj)
     {
-        if(obj.gameObject.layer == LayerMask.NameToLayer("Bomb"))
+        if (obj.gameObject.layer == LayerMask.NameToLayer("Bomb"))
         {
             obj.isTrigger = false;
+        }
+    }
+
+    private void Explode(Vector2 position, Vector2 direction, int length)
+    {
+        position += direction;
+
+        if (length > 0 && Physics2D.OverlapBox(position, Vector2.one / 2f, 0f, explosionLayerMask))
+        {
+            ClearDestructible(position);
+        }
+        else if (length > 0)
+        {
+            GameObject explosion = Instantiate(explosionPrefab, position, Quaternion.identity);
+            Destroy(explosion.gameObject, explosionDuration);
+            Explode(position, direction, length - 1);
+        }
+    }
+
+    private void ClearDestructible(Vector2 position)
+    {
+        Vector3Int cell = destructibleTiles.WorldToCell(position);
+        TileBase tile = destructibleTiles.GetTile(cell);
+
+        if (tile != null)
+        {
+            Instantiate(destructiblePrefab, position, Quaternion.identity);
+            destructibleTiles.SetTile(cell, null);
         }
     }
 
@@ -82,8 +132,8 @@ public class PlantBomb : MonoBehaviour
         bombRemain++;
     }
 
-    /*public void SetBombRadious(int val)
+    public void SetBombRadious(int val)
     {
         explosionRadius += val;
-    }*/
+    }
 }

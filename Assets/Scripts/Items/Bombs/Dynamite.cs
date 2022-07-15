@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 public class Dynamite : MonoBehaviour
 {
     public GameObject gameLogic;
-    private float bombTimer = 3f;
+    private float bombTimer = 1f;
 
     [Header("Explosion")]
     public GameObject explosionPrefab;
@@ -21,7 +21,6 @@ public class Dynamite : MonoBehaviour
     void Start()
     {
         gameLogic = GameObject.Find("GameLogic");
-        bombTimer = gameLogic.GetComponent<GameManager>().bombTimer;
         explosionDuration = gameLogic.GetComponent<GameManager>().explosionDuration;
         explosionLayerMask = gameLogic.GetComponent<GameManager>().explosionLayerMask;
         destructibleTiles = gameLogic.GetComponent<GameManager>().destructibleTiles;

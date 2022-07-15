@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 3695316847275415803}
   - component: {fileID: 3023665878421910055}
   - component: {fileID: -819871711206182888}
-  - component: {fileID: -4883913909873032854}
   m_Layer: 7
   m_Name: Bomb
   m_TagString: Untagged
@@ -157,22 +156,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8, y: 0.8}
   m_EdgeRadius: 0
---- !u!114 &-4883913909873032854
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2582005153791896112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6d05687b846a1a47a574ef7bbf33060, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameLogic: {fileID: 4253191609065576345, guid: 5d16cbf57657de9458581b7a29758347, type: 3}
-  explosionPrefab: {fileID: 5098315309284263598, guid: 7516be3048129a0448b6caa722ad35cc, type: 3}
-  explosionLayerMask:
-    serializedVersion: 2
-    m_Bits: 64
-  destructibleTiles: {fileID: 5005709521687987027, guid: f813f163fd0e71246a16fa56860b5a92, type: 3}
-  destructiblePrefab: {fileID: 2474971896594290835, guid: 1ad66ee0aaf60f648afce32a87532e8a, type: 3}

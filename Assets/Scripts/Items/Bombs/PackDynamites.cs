@@ -24,8 +24,6 @@ public class PackDynamites : MonoBehaviour
     void Start()
     {
         gameLogic = GameObject.Find("GameLogic");
-        explosionRadius = gameLogic.GetComponent<GameManager>().explosionRadius;
-        bombTimer = gameLogic.GetComponent<GameManager>().bombTimer;
         explosionDuration = gameLogic.GetComponent<GameManager>().explosionDuration;
         explosionLayerMask = gameLogic.GetComponent<GameManager>().explosionLayerMask;
         destructibleTiles = gameLogic.GetComponent<GameManager>().destructibleTiles;
@@ -93,12 +91,21 @@ public class PackDynamites : MonoBehaviour
         {
             randomNumberX = Random.Range(0, 3);
             randomNumberY = Random.Range(0, 3);
-            positionDrop.x = position.x + randomNumberX;
-            positionDrop.y = position.y + randomNumberY;
+            positionDrop.x = position.x + randomNumberX * RandomSign();
+            positionDrop.y = position.y + randomNumberY * RandomSign();
             positionDrop.x = Mathf.Round(positionDrop.x);
             positionDrop.y = Mathf.Round(positionDrop.y);
 
             Instantiate(dynamite, positionDrop, Quaternion.identity);
         }
+    }
+
+    private int RandomSign()
+    {
+        if (Random.Range(0, 2) == 0)
+        {
+            return -1;
+        }
+        return 1;
     }
 }
