@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     public GameObject[] players;
+    public GameObject GameUi;
 
     [Header("Game-Variables-Player")]
     public float speedPlayers = 5f;
@@ -25,6 +27,11 @@ public class GameManager : MonoBehaviour
     public float spawnChance = 0.2f;
     public GameObject[] spawnItems;
 
+    void Start()
+    {
+        StartCoroutine(StartSequence());
+    }
+
     public void CheckWinState()
     {
         int aliveCount = 0;
@@ -39,6 +46,8 @@ public class GameManager : MonoBehaviour
 
         if (aliveCount <= 1)
         {
+            GameUi.GetComponent<GameUI>().InfoText.SetActive(true);
+            GameUi.GetComponent<GameUI>().InfoText.GetComponent<TextMeshProUGUI>().text = "Game Over";
             Invoke(nameof(NewRound), 3f);
         }
     }
@@ -46,5 +55,28 @@ public class GameManager : MonoBehaviour
     private void NewRound()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    private IEnumerator StartSequence()
+    {
+        GameUi.GetComponent<GameUI>().InfoText.SetActive(true);
+        foreach (GameObject player in players)
+        {
+            player.GetComponent<PlayerControl>().enabled = false;
+            player.GetComponent<PlantBomb>().enabled = false;
+        }
+        GameUi.GetComponent<GameUI>().InfoText.GetComponent<TextMeshProUGUI>().text = "READY?";
+        yield return new WaitForSeconds(2.0f);
+
+
+
+        GameUi.GetComponent<GameUI>().InfoText.GetComponent<TextMeshProUGUI>().text = "GO!";
+        foreach (GameObject player in players)
+        {
+            player.GetComponent<PlayerControl>().enabled = true;
+            player.GetComponent<PlantBomb>().enabled = true;
+        }
+        yield return new WaitForSeconds(0.5f);
+        GameUi.GetComponent<GameUI>().InfoText.SetActive(false);
     }
 }

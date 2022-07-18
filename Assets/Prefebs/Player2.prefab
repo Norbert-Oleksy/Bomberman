@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 162ae667e0d554744b958df084f2bfd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameLogic: {fileID: 4253191609065576345, guid: 5d16cbf57657de9458581b7a29758347, type: 3}
+  gameLogic: {fileID: 0}
   deadbody: {fileID: 4383120086253833284, guid: e38614929c34ac045b1ca22496b41f12, type: 3}
   playerMoveUp: 273
   playerMoveDown: 274
@@ -118,13 +118,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95dc92f284685214a8f0266931dfc00e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameLogic: {fileID: 4253191609065576345, guid: 5d16cbf57657de9458581b7a29758347, type: 3}
+  gameLogic: {fileID: 0}
   bombPrefeb: {fileID: 2582005153791896112, guid: a682c7c1500487642b006080051e290d, type: 3}
+  bombPrefebSpecial: {fileID: 0}
+  special: 0
   explosionPrefab: {fileID: 5098315309284263598, guid: 7516be3048129a0448b6caa722ad35cc, type: 3}
   explosionLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  destructibleTiles: {fileID: 5005709521687987027, guid: f813f163fd0e71246a16fa56860b5a92, type: 3}
+  destructibleTiles: {fileID: 0}
   destructiblePrefab: {fileID: 2474971896594290835, guid: 1ad66ee0aaf60f648afce32a87532e8a, type: 3}
   bombPlant: 271
 --- !u!50 &9106229806452995354

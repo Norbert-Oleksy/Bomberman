@@ -12,7 +12,7 @@ public class AtomicBomb : MonoBehaviour
     public GameObject explosionPrefab;
     public LayerMask explosionLayerMask;
     private float explosionDuration = 1f;
-    private int explosionRadius = 5;
+    private int explosionRadius = 3;
 
     [Header("Destructible")]
     public Tilemap destructibleTiles;

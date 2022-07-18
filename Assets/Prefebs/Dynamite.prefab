@@ -168,10 +168,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 788ddf968e3499247b76f4367ae83e51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameLogic: {fileID: 4253191609065576345, guid: 5d16cbf57657de9458581b7a29758347, type: 3}
+  gameLogic: {fileID: 0}
   explosionPrefab: {fileID: 5098315309284263598, guid: 7516be3048129a0448b6caa722ad35cc, type: 3}
   explosionLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  destructibleTiles: {fileID: 5005709521687987027, guid: f813f163fd0e71246a16fa56860b5a92, type: 3}
+  destructibleTiles: {fileID: 0}
   destructiblePrefab: {fileID: 2474971896594290835, guid: 1ad66ee0aaf60f648afce32a87532e8a, type: 3}
