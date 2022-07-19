@@ -44,10 +44,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 009eecf17154db24a92017633819dd6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  players:
-  - {fileID: 4038463708703755510, guid: b97c9b8a902387440951d121b9140755, type: 3}
-  - {fileID: 6776392370149067274, guid: ae2706d34892ed442aa3754b4783572b, type: 3}
+  mode: 0
+  players: []
+  GameUi: {fileID: 0}
   speedPlayers: 5
+  destructibleTiles: {fileID: 0}
+  arenaTiles: {fileID: 0}
+  boxTile: {fileID: 11400000, guid: 457c395b9b00a9a4e9ddd2e4829e4e9d, type: 2}
+  mapHight: 4
+  mapWidth: 8
+  spawnBoxChance: 0.5
   bombAmount: 1
   explosionRadius: 1
   bombTimer: 3
@@ -55,7 +61,6 @@ MonoBehaviour:
   explosionLayerMask:
     serializedVersion: 2
     m_Bits: 0
-  destructibleTiles: {fileID: 0}
   destructionTime: 1
   spawnChance: 0.2
   spawnItems:

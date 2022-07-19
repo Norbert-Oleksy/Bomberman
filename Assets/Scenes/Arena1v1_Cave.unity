@@ -1219,15 +1219,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4038463708703755499, guid: b97c9b8a902387440951d121b9140755, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4038463708703755499, guid: b97c9b8a902387440951d121b9140755, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4038463708703755499, guid: b97c9b8a902387440951d121b9140755, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4038463708703755499, guid: b97c9b8a902387440951d121b9140755, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1414,6 +1414,10 @@ PrefabInstance:
       propertyPath: destructibleTiles
       value: 
       objectReference: {fileID: 282457460}
+    - target: {fileID: 4253191609065576344, guid: 5d16cbf57657de9458581b7a29758347, type: 3}
+      propertyPath: players.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4253191609065576344, guid: 5d16cbf57657de9458581b7a29758347, type: 3}
       propertyPath: players.Array.data[0]
       value: 

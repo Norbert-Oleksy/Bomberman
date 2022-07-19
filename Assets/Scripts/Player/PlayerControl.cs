@@ -73,7 +73,7 @@ public class PlayerControl : MonoBehaviour
 
     public void SetPlayerSpeed(int val)
     {
-        speed+=val;
+        speed=speed+(speed/10)*val;
     }
 
 }

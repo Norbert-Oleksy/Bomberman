@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5179331521947994893}
   m_Layer: 0
   m_Name: ItemMoreBombs
-  m_TagString: Untagged
+  m_TagString: PickUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -124,4 +124,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2bf786c8246e904896bd36d9be3e51d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bomb: {fileID: 0}
   type: 0
