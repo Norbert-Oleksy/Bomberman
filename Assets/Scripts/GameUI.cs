@@ -8,6 +8,8 @@ public class GameUI : MonoBehaviour
     public GameObject ExitButton;
     public GameObject InfoText;
     public GameObject TimeText;
+    public GameObject pointsText;
+    public GameObject scoreText;
 
 
     public void Exit()

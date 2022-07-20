@@ -43,7 +43,7 @@ public class Mine : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D obj)
     {
-        if(!safty && obj.CompareTag("Player")) PlantingBomb();
+        if(!safty && (obj.CompareTag("Player") || obj.CompareTag("Enemy"))) PlantingBomb();
     }
     private void OnTriggerExit2D(Collider2D collision)
     {

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 719509402180228708}
   - component: {fileID: 3407393864261312662}
   - component: {fileID: 8187471083496552307}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Dynamite
   m_TagString: Bomb
   m_Icon: {fileID: 0}

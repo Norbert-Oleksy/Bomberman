@@ -50,7 +50,7 @@ public class PlayerControl : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D obj)
     {
-        if (obj.gameObject.layer == LayerMask.NameToLayer("Explosion"))
+        if (obj.gameObject.layer == LayerMask.NameToLayer("Explosion") || obj.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             DeathSequence();
         }
