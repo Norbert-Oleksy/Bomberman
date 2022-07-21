@@ -5,7 +5,9 @@ using UnityEngine.Tilemaps;
 
 public class PlantBomb : MonoBehaviour
 {
-    public GameObject gameLogic;
+    public GameManager GameManager;
+
+    public bool saftyFirst = false;
 
     [Header("Bomb")]
     public GameObject bombPrefeb;
@@ -32,13 +34,13 @@ public class PlantBomb : MonoBehaviour
     void Start()
     {
         //GameLogic
-        gameLogic = GameObject.Find("GameLogic");
-        explosionRadius = gameLogic.GetComponent<GameManager>().explosionRadius;
-        bombTimer = gameLogic.GetComponent<GameManager>().bombTimer;
-        explosionDuration = gameLogic.GetComponent<GameManager>().explosionDuration;
-        explosionLayerMask = gameLogic.GetComponent<GameManager>().explosionLayerMask;
-        destructibleTiles = gameLogic.GetComponent<GameManager>().destructibleTiles;
-        bombAmount = gameLogic.GetComponent<GameManager>().bombAmount;
+        GameManager = FindObjectOfType<GameManager>();
+        explosionRadius = GameManager.explosionRadius;
+        bombTimer = GameManager.bombTimer;
+        explosionDuration = GameManager.explosionDuration;
+        explosionLayerMask = GameManager.explosionLayerMask;
+        destructibleTiles = GameManager.destructibleTiles;
+        bombAmount = GameManager.bombAmount;
 
         bombRemain = bombAmount;
         bombPrefebSpecial = bombPrefeb;
@@ -47,7 +49,7 @@ public class PlantBomb : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(bombPlant) && bombRemain>0)
+        if (Input.GetKeyDown(bombPlant) && bombRemain>0 && !saftyFirst)
         {
             StartCoroutine(PlantingBomb());
         }

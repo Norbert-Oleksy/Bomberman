@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Arena1v1_Cave.unity
     guid: ceaf9bb6cca953a41b4f82b72681d3ac
+  - enabled: 1
+    path: Assets/Scenes/SinglePlayer.unity
+    guid: 1e027261e5533cb49b37478f912eaa6d
+  - enabled: 1
+    path: Assets/Scenes/OpenWorld.unity
+    guid: bcabe64501127bf4793524cc35dd3056
   m_configObjects: {}

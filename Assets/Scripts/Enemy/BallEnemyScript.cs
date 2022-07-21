@@ -6,29 +6,47 @@ public class BallEnemyScript : MonoBehaviour
 {
     public int points = 10;
     public int lives = 1;
-    public float speed = 1;
+    public float speed = 0.2f;
+
+    private GameManager GameManager;
 
     [Header("Movement")]
-    private Vector3 lastPosition;
-    private List<Vector3Int> moveMap;
+    private Vector3Int lastPosition;
+    private Vector3Int destination;
+    public List<Vector3Int> moveMap = new List<Vector3Int>();
     private bool moving = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        lives += FindObjectOfType<GameManager>().stage / 10;
-        speed+= (speed + FindObjectOfType<GameManager>().stage) / 10;
-        lastPosition = gameObject.transform.position;
+        GameManager = FindObjectOfType<GameManager>();
+        int stage = GameManager.stage;
+        lives += stage / 10;
+        speed+= (speed + stage) / 10;
+        points += (stage - 1) * 10;
+        lastPosition.x = (int)gameObject.transform.position.x;
+        lastPosition.y = (int)gameObject.transform.position.y;
+        lastPosition.z=0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*
         if (!moving)
         {
-            if(moveMap.Co)MapingMap();
-        }*/
+            moving = true;
+            MapingMap();
+        }else{
+            if (transform.position == destination)
+            {
+                lastPosition = destination;
+                moving = false;
+            }
+            else
+            {
+                transform.position = Vector3.MoveTowards(transform.position, destination, speed * Time.deltaTime);
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D obj)
@@ -38,9 +56,9 @@ public class BallEnemyScript : MonoBehaviour
             lives--;
             if (lives <= 0)
             {
-                FindObjectOfType<GameManager>().AddPoints(points);
-                FindObjectOfType<GameManager>().RemoveEnemy(gameObject);
-                FindObjectOfType<GameManager>().CheckWinState();
+                GameManager.AddPoints(points);
+                GameManager.RemoveEnemy(gameObject);
+                GameManager.CheckWinState();
                 Destroy(gameObject);
             }
         }
@@ -49,27 +67,57 @@ public class BallEnemyScript : MonoBehaviour
     private void MapingMap()
     {
         Vector3 position = gameObject.transform.position;
-        Vector3Int positionInt = new Vector3Int
+        Vector3Int positionInt = new()
         {
             x = (int)Mathf.Round(position.x)-1,
-            y = (int)Mathf.Round(position.y),
+            y = (int)Mathf.Round(position.y)-1,
             z = 0
         };
-        if (FindObjectOfType<GameManager>().CheckPosition(positionInt)) moveMap.Add(positionInt);
-
+        if (GameManager.CheckPosition(positionInt))
+        {
+            moveMap.Add(positionInt);
+        }
         positionInt.x += 2;
-        if (FindObjectOfType<GameManager>().CheckPosition(positionInt)) moveMap.Add(positionInt);
-
+        if (GameManager.CheckPosition(positionInt))
+        {
+            moveMap.Add(positionInt);
+        }
         positionInt.x -= 1;
         positionInt.y -= 1;
-        if (FindObjectOfType<GameManager>().CheckPosition(positionInt)) moveMap.Add(positionInt);
-
+        if (GameManager.CheckPosition(positionInt))
+        {
+            moveMap.Add(positionInt);
+        }
         positionInt.y += 2;
-        if (FindObjectOfType<GameManager>().CheckPosition(positionInt)) moveMap.Add(positionInt);
+        if (GameManager.CheckPosition(positionInt))
+        {
+            moveMap.Add(positionInt);
+        }
+        if (moveMap.Count > 0) { 
+            Move();
+        }
+        else
+        {
+            moving = false;
+        }
+
     }
 
     private void Move()
     {
-        
+        int ind = Random.Range(0, moveMap.Count);
+        Vector3Int pos = moveMap[ind];
+        if (pos == lastPosition)
+        {
+            if (Random.value < 0.5f)
+            {
+                ind = Random.Range(0, moveMap.Count);
+                pos = moveMap[ind];
+            }
+        }
+        destination = pos;
+        destination.y += 1;
+        moveMap.Clear();
     }
+
 }

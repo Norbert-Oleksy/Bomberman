@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     }
 
     public GameObject[] players;
-    public GameObject GameUi;
+    public GameUI GameUI;
 
     [Header("Game-Variables-Player")]
     public float speedPlayers = 5f;
@@ -58,16 +58,19 @@ public class GameManager : MonoBehaviour
     private GameObject timeText;
     private GameObject pointsText;
     private GameObject scoreText;
+    private GameObject stageText;
 
     void Start()
     {
-        infoText = GameUi.GetComponent<GameUI>().InfoText;
+        GameUI = FindObjectOfType<GameUI>();
+        infoText = GameUI.InfoText;
         if (mode == ItemType.Arena) StartCoroutine(StartSequence());
         if (mode == ItemType.SinglePlayer)
         {
-            pointsText = GameUi.GetComponent<GameUI>().pointsText;
-            scoreText = GameUi.GetComponent<GameUI>().scoreText;
-            timeText = GameUi.GetComponent<GameUI>().TimeText;
+            stageText = GameUI.stageText;
+            pointsText = GameUI.pointsText;
+            scoreText = GameUI.scoreText;
+            timeText = GameUI.TimeText;
             MapGenerate();
             timer = startTimer;
             score = points;
@@ -203,20 +206,27 @@ public class GameManager : MonoBehaviour
     //Odpowiada za przejœcie do nastêpnego etapu
     public IEnumerator NextStage()
     {
+        foreach (GameObject player in players)
+        {
+            player.GetComponent<PlantBomb>().saftyFirst = true;
+        }
         timerOn = false;
         ScoreSummary();
-        timer = startTimer;        
-        yield return new WaitForSeconds(3.0f);
-        Destroy(GameObject.FindWithTag("Bomb"));
+        timer = startTimer;
+        DestroyAllBombs();
+        yield return new WaitForSeconds(2.0f);
         Destroy(GameObject.FindWithTag("PickUp"));
         destructibleTiles.ClearAllTiles();        
         foreach (GameObject player in players)
         {
             player.transform.position = new Vector3(0, 0, 0);
+            player.GetComponent<PlantBomb>().saftyFirst = false;
         }
         if (spawnBoxChance < 8) spawnBoxChance += 0.02f;
         MapGenerate();
         stage++;
+        pointsText.GetComponent<TextMeshProUGUI>().text = "0";
+        stageText.GetComponent<TextMeshProUGUI>().text = stage.ToString();
         StartCoroutine(StageStart());
     }
 
@@ -232,7 +242,6 @@ public class GameManager : MonoBehaviour
     {
         score = score + points * (int)timer * stage;
         scoreText.GetComponent<TextMeshProUGUI>().text = score.ToString();
-        pointsText.GetComponent<TextMeshProUGUI>().text = "0";
         points = 0;
     }
 
@@ -243,13 +252,14 @@ public class GameManager : MonoBehaviour
         bool plc;
         for (int count=1;count <= (1+ stage/2);count++)
         {
+            if (count >= 6) break;
             plc = false;
             while (!plc)
             {
                 cell.x = (int)Mathf.Round( (0 - mapWidth) + Random.Range(0, mapWidth+mapWidth));
                 cell.y = (int)Mathf.Round((0 - mapHight) + Random.Range(0, mapHight + mapHight));
 
-                if (!(cell.y >= -1 && cell.y <= 1 && cell.x >= -1 && cell.x <= 1))
+                if (!(cell.y >= -2 && cell.y <= 2 && cell.x >= -2 && cell.x <= 2))
                 {
                     TileBase tile = arenaTiles.GetTile(cell);
                     if (tile == null)
@@ -262,7 +272,6 @@ public class GameManager : MonoBehaviour
                     }
                 }
             }
-            if (count == 5) break;
         }
     }
 
@@ -275,6 +284,20 @@ public class GameManager : MonoBehaviour
     {
         TileBase tile = arenaTiles.GetTile(pos);
         TileBase tile2 = destructibleTiles.GetTile(pos);
-        return tile == null || tile2 == null;
+        if(tile == null && tile2 == null)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    private void DestroyAllBombs()
+    {
+        GameObject[] bomby = GameObject.FindGameObjectsWithTag("Bomb");
+
+        for (var i = 0; i < bomby.Length; i++)
+        {
+            bomby[i].transform.position = new Vector3Int(20, 20, 0);
+        }
     }
 }

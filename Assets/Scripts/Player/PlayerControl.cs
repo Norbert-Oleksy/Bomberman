@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
-    public GameObject gameLogic;
+    public GameManager GameManager;
     Rigidbody2D rigidbody2d;
     private float speed;
     public GameObject deadbody;
@@ -20,7 +20,8 @@ public class PlayerControl : MonoBehaviour
         rigidbody2d = GetComponent<Rigidbody2D>();
 
         //GameLogic
-        speed = gameLogic.GetComponent<GameManager>().speedPlayers;
+        GameManager = FindObjectOfType<GameManager>();
+        speed = GameManager.speedPlayers;
     }
 
     void FixedUpdate()
@@ -68,7 +69,7 @@ public class PlayerControl : MonoBehaviour
 
     private void OnDeathSequenceEnded()
     {
-        FindObjectOfType<GameManager>().CheckWinState();
+        GameManager.CheckWinState();
     }
 
     public void SetPlayerSpeed(int val)

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8189650046563104289}
   m_Layer: 0
   m_Name: BoxDestroy
-  m_TagString: PickUp
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca3286ea856a68746935c81fcae155df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameLogic: {fileID: 0}
+  GameManager: {fileID: 0}
   spawnChance: 0
 --- !u!114 &8189650046563104289
 MonoBehaviour:

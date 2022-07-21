@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Destructible : MonoBehaviour
 {
-    public GameObject gameLogic;
+    public GameManager GameManager;
 
     private float destructionTime = 1f;
     public float spawnChance;
@@ -13,12 +13,12 @@ public class Destructible : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameLogic = GameObject.Find("GameLogic");
+        GameManager = FindObjectOfType<GameManager>();
 
         //GameLogic
-        spawnChance = gameLogic.GetComponent<GameManager>().spawnChance;
-        destructionTime = gameLogic.GetComponent<GameManager>().destructionTime;
-        spawnItems = gameLogic.GetComponent<GameManager>().spawnItems;
+        spawnChance = GameManager.spawnChance;
+        destructionTime = GameManager.destructionTime;
+        spawnItems = GameManager.spawnItems;
         Destroy(gameObject, destructionTime);
     }
 

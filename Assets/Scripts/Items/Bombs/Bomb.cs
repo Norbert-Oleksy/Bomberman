@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 
 public class Bomb : MonoBehaviour
 {
-    public GameObject gameLogic;
+    public GameManager GameManager;
     private float bombTimer = 3f;
 
     [Header("Explosion")]
@@ -22,12 +22,12 @@ public class Bomb : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameLogic = GameObject.Find("GameLogic");
-        explosionRadius = gameLogic.GetComponent<GameManager>().explosionRadius;
-        bombTimer = gameLogic.GetComponent<GameManager>().bombTimer;
-        explosionDuration = gameLogic.GetComponent<GameManager>().explosionDuration;
-        explosionLayerMask = gameLogic.GetComponent<GameManager>().explosionLayerMask;
-        destructibleTiles = gameLogic.GetComponent<GameManager>().destructibleTiles;
+        GameManager = FindObjectOfType<GameManager>();
+        explosionRadius = GameManager.explosionRadius;
+        bombTimer = GameManager.bombTimer;
+        explosionDuration = GameManager.explosionDuration;
+        explosionLayerMask = GameManager.explosionLayerMask;
+        destructibleTiles = GameManager.destructibleTiles;
 
         StartCoroutine(PlantingBomb());
     }

@@ -5,7 +5,7 @@ using UnityEngine.Tilemaps;
 
 public class Mine : MonoBehaviour
 {
-    public GameObject gameLogic;
+    public GameManager GameManager;
 
     [Header("Explosion")]
     public GameObject explosionPrefab;
@@ -22,9 +22,9 @@ public class Mine : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameLogic = GameObject.Find("GameLogic");
-        explosionLayerMask = gameLogic.GetComponent<GameManager>().explosionLayerMask;
-        destructibleTiles = gameLogic.GetComponent<GameManager>().destructibleTiles;
+        GameManager = FindObjectOfType<GameManager>();
+        explosionLayerMask = GameManager.explosionLayerMask;
+        destructibleTiles = GameManager.destructibleTiles;
     }
 
     private void PlantingBomb()

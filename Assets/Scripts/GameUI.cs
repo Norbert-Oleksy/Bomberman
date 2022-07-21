@@ -10,6 +10,7 @@ public class GameUI : MonoBehaviour
     public GameObject TimeText;
     public GameObject pointsText;
     public GameObject scoreText;
+    public GameObject stageText;
 
 
     public void Exit()

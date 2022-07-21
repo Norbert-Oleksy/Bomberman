@@ -5,7 +5,8 @@ using UnityEngine.Tilemaps;
 
 public class Dynamite : MonoBehaviour
 {
-    public GameObject gameLogic;
+    public GameManager GameManager;
+
     private float bombTimer = 1f;
 
     [Header("Explosion")]
@@ -20,10 +21,10 @@ public class Dynamite : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameLogic = GameObject.Find("GameLogic");
-        explosionDuration = gameLogic.GetComponent<GameManager>().explosionDuration;
-        explosionLayerMask = gameLogic.GetComponent<GameManager>().explosionLayerMask;
-        destructibleTiles = gameLogic.GetComponent<GameManager>().destructibleTiles;
+        GameManager = FindObjectOfType<GameManager>();
+        explosionDuration = GameManager.explosionDuration;
+        explosionLayerMask = GameManager.explosionLayerMask;
+        destructibleTiles = GameManager.destructibleTiles;
 
         StartCoroutine(PlantingBomb());
     }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bomb
   - PickUp
+  - Enemy
   layers:
   - Default
   - TransparentFX
