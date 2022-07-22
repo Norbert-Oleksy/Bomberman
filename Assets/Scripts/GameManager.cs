@@ -119,6 +119,36 @@ public class GameManager : MonoBehaviour
                 ScoreSummary();
                 infoText.SetActive(true);
                 infoText.GetComponent<TextMeshProUGUI>().text = "Game Over";
+
+                if (PlayerPrefs.HasKey("SinglePlayerHighestScore"))
+                {
+                    if (PlayerPrefs.GetInt("SinglePlayerHighestScore") < score)
+                    {
+                        PlayerPrefs.SetInt("SinglePlayerHighestScore", score);
+                    }
+
+                }
+                else
+                {
+                    PlayerPrefs.SetInt("SinglePlayerHighestScore", score);
+                }
+                
+                if (PlayerPrefs.HasKey("SinglePlayerHighestStage"))
+                {
+                    if (PlayerPrefs.GetInt("SinglePlayerHighestStage") < stage)
+                    {
+                        PlayerPrefs.SetInt("SinglePlayerHighestStage", stage);
+                    }
+
+                }
+                else
+                {
+                    PlayerPrefs.SetInt("SinglePlayerHighestStage", stage);
+                }
+
+
+
+                PlayerPrefs.Save();
                 Invoke(nameof(NewRound), 3f);
             }else if (mobs.Count <= 0)
             {

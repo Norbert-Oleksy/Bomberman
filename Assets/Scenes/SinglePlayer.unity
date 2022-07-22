@@ -14625,6 +14625,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4253191609065576344, guid: 5d16cbf57657de9458581b7a29758347, type: 3}
+      propertyPath: stage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253191609065576344, guid: 5d16cbf57657de9458581b7a29758347, type: 3}
       propertyPath: GameUi
       value: 
       objectReference: {fileID: 1079712898}

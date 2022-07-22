@@ -22,7 +22,7 @@ public class BallEnemyScript : MonoBehaviour
         GameManager = FindObjectOfType<GameManager>();
         int stage = GameManager.stage;
         lives += stage / 10;
-        speed+= (speed + stage) / 10;
+        speed+= (speed /10)*speed;
         points += (stage - 1) * 10;
         lastPosition.x = (int)gameObject.transform.position.x;
         lastPosition.y = (int)gameObject.transform.position.y;

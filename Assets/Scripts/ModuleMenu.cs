@@ -9,9 +9,4 @@ public class ModuleMenu : MonoBehaviour
     {
         SceneManager.LoadScene("SinglePlayer");
     }
-
-    public void OpenWorld()
-    {
-        SceneManager.LoadScene("OpenWorld");
-    }
 }
