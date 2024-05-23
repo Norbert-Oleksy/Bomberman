@@ -8,7 +8,7 @@ public class PlayerControl : MonoBehaviour
     Rigidbody2D rigidbody2d;
     private float speed;
     public GameObject deadbody;
-
+    [SerializeField] private string msg;
     public KeyCode playerMoveUp = KeyCode.W;
     public KeyCode playerMoveDown = KeyCode.S;
     public KeyCode playerMoveLeft = KeyCode.A;
@@ -69,7 +69,7 @@ public class PlayerControl : MonoBehaviour
 
     private void OnDeathSequenceEnded()
     {
-        GameManager.CheckWinState();
+        GameManager.CheckWinState(msg);
     }
 
     public void SetPlayerSpeed(int val)

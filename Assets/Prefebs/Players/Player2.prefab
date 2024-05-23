@@ -100,8 +100,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 162ae667e0d554744b958df084f2bfd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameLogic: {fileID: 0}
+  GameManager: {fileID: 0}
   deadbody: {fileID: 4383120086253833284, guid: e38614929c34ac045b1ca22496b41f12, type: 3}
+  msg: PLAYER 1 WINS!
   playerMoveUp: 273
   playerMoveDown: 274
   playerMoveLeft: 276
@@ -118,7 +119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95dc92f284685214a8f0266931dfc00e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameLogic: {fileID: 0}
+  GameManager: {fileID: 0}
+  saftyFirst: 0
   bombPrefeb: {fileID: 2582005153791896112, guid: a682c7c1500487642b006080051e290d, type: 3}
   bombPrefebSpecial: {fileID: 0}
   special: 0

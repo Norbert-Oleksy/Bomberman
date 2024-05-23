@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
     }
 
     //Sprawdza czy gra siê koñczy
-    public void CheckWinState()
+    public void CheckWinState(string msg="")
     {
         if (mode == ItemType.Arena)
         {
@@ -98,7 +98,14 @@ public class GameManager : MonoBehaviour
             if (aliveCount <= 1)
             {
                 infoText.SetActive(true);
-                infoText.GetComponent<TextMeshProUGUI>().text = "Game Over";
+                if (msg != null && msg != "")
+                {
+                    infoText.GetComponent<TextMeshProUGUI>().text = msg;
+                }
+                else
+                {
+                    infoText.GetComponent<TextMeshProUGUI>().text = "Game Over";
+                }
                 Invoke(nameof(NewRound), 3f);
             }
         }
@@ -122,7 +129,7 @@ public class GameManager : MonoBehaviour
 
                 if (PlayerPrefs.HasKey("SinglePlayerHighestScore"))
                 {
-                    if (PlayerPrefs.GetInt("SinglePlayerHighestScore") < score)
+                    if (PlayerPrefs.GetInt("SinglePlayerHighestScore",0) < score)
                     {
                         PlayerPrefs.SetInt("SinglePlayerHighestScore", score);
                     }
@@ -135,7 +142,7 @@ public class GameManager : MonoBehaviour
                 
                 if (PlayerPrefs.HasKey("SinglePlayerHighestStage"))
                 {
-                    if (PlayerPrefs.GetInt("SinglePlayerHighestStage") < stage)
+                    if (PlayerPrefs.GetInt("SinglePlayerHighestStage",0) < stage)
                     {
                         PlayerPrefs.SetInt("SinglePlayerHighestStage", stage);
                     }
