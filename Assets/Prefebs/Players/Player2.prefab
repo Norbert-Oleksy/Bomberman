@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2906414266290626353}
   - component: {fileID: 9106229806452995354}
   - component: {fileID: 2100868498819224710}
+  - component: {fileID: 2816653962302994506}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Player
@@ -107,6 +108,8 @@ MonoBehaviour:
   playerMoveDown: 274
   playerMoveLeft: 276
   playerMoveRight: 275
+  walk: 0
+  animator: {fileID: 2816653962302994506}
 --- !u!114 &2906414266290626353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,7 +133,7 @@ MonoBehaviour:
     m_Bits: 64
   destructibleTiles: {fileID: 0}
   destructiblePrefab: {fileID: 2474971896594290835, guid: 1ad66ee0aaf60f648afce32a87532e8a, type: 3}
-  bombPlant: 271
+  bombPlant: 13
 --- !u!50 &9106229806452995354
 Rigidbody2D:
   serializedVersion: 4
@@ -168,3 +171,23 @@ CircleCollider2D:
   m_Offset: {x: 0.001440525, y: 0}
   serializedVersion: 2
   m_Radius: 0.43805826
+--- !u!95 &2816653962302994506
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6776392370149067274}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1d35d750c6af2dc4db8fec1ed76cf9ce, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

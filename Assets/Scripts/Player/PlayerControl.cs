@@ -13,7 +13,8 @@ public class PlayerControl : MonoBehaviour
     public KeyCode playerMoveDown = KeyCode.S;
     public KeyCode playerMoveLeft = KeyCode.A;
     public KeyCode playerMoveRight = KeyCode.D;
-
+    public bool walk;
+    [SerializeField] Animator animator;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +23,7 @@ public class PlayerControl : MonoBehaviour
         //GameLogic
         GameManager = FindObjectOfType<GameManager>();
         speed = GameManager.speedPlayers;
+        walk = false;
     }
 
     void FixedUpdate()
@@ -32,20 +34,28 @@ public class PlayerControl : MonoBehaviour
         if (Input.GetKey(playerMoveUp))
         {
             translation = Vector2.up * speed * Time.fixedDeltaTime;
+            walk = true;
         }
         else if (Input.GetKey(playerMoveDown))
         {
             translation = Vector2.down * speed * Time.fixedDeltaTime;
+            walk = true;
         }
         else if (Input.GetKey(playerMoveLeft))
         {
             translation = Vector2.left * speed * Time.fixedDeltaTime;
+            walk = true;
         }
         else if (Input.GetKey(playerMoveRight))
         {
             translation = Vector2.right * speed * Time.fixedDeltaTime;
+            walk = true;
         }
-
+        else
+        {
+            walk = false;
+        }
+        animator.SetBool("walk",walk);
         rigidbody2d.MovePosition(position + translation);
     }
 
